@@ -200,3 +200,5 @@ footer b{color:#cfe0d3}
 .refitem .mnote{margin-top:10px}
 
 @media print{.rtiles iframe{display:none}.refitem{break-inside:avoid}}
+
+@media(max-width:560px){.cmp.mg{display:block;overflow-x:auto}}
