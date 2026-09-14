@@ -170,3 +170,10 @@ footer b{color:#cfe0d3}
   border-radius:8px;padding:13px 17px;font-size:13.5px;color:var(--ink2);line-height:1.8}
 .todo b{color:var(--ink)}
 @media print{.mergecard{break-inside:avoid}}
+
+/* 其他物件（僅供價格參考） */
+.refbox{background:#fff;border:1px dashed #c9c5bb;border-radius:12px;padding:16px 18px 14px}
+.refhead{margin:0 0 12px;font-size:13.5px;color:var(--ink2)}
+.refhead b{color:#9a4a12}
+.cmp.ref th{background:#8a8478;font-size:12px}
+.cmp.ref td{color:var(--ink2)}

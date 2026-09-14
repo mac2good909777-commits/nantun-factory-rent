@@ -26,8 +26,7 @@ document.addEventListener("keydown", e=>{
 /* ---------- 區位圖（Leaflet）---------- */
 if (document.getElementById("locmap") && window.L) {
   const CASES = [
-    {n:"1", t:"物件一　萬和南一路 209 號", s:"約45坪/間・挑高約8米・共4間（合計約180坪）", ll:[24.130262,120.635346]},
-    {n:"2", t:"物件二　龍富九路 39 號", s:"約42坪・65,000元/月", ll:[24.134989,120.626612]}
+    {n:"", t:"萬和南一路 209 號", s:"約45坪/間・挑高約8米・共4間（合併一樓約180坪）", ll:[24.130262,120.635346]}
   ];
   const NODES = [
     {c:"c1", t:"國道 1 號（中山高）南屯交流道", ll:[24.15134,120.62003]},
@@ -52,16 +51,16 @@ if (document.getElementById("locmap") && window.L) {
   });
   CASES.forEach(c=>{
     all.push(c.ll);
-    L.marker(c.ll, {icon: L.divIcon({className:"", iconSize:[30,30], iconAnchor:[15,15],
-      html:`<div style="width:30px;height:30px;border-radius:50%;background:#2B5937;color:#fff;
-        border:3px solid #C0A434;box-shadow:0 2px 7px rgba(0,0,0,.5);display:flex;
-        align-items:center;justify-content:center;font:800 15px/1 sans-serif">${c.n}</div>`})})
+    L.marker(c.ll, {zIndexOffset:1000, icon: L.divIcon({className:"", iconSize:[58,30], iconAnchor:[29,15],
+      html:`<div style="width:58px;height:30px;border-radius:15px;background:#2B5937;color:#fff;
+        border:3px solid #C0A434;box-shadow:0 2px 8px rgba(0,0,0,.5);display:flex;
+        align-items:center;justify-content:center;font:800 14px/1 sans-serif;letter-spacing:.05em">本案</div>`})})
       .addTo(map)
-      .bindTooltip(c.t, {direction:"top", offset:[0,-16], permanent:false})
+      .bindTooltip(c.t, {direction:"top", offset:[0,-16]})
       .bindPopup(`<b>${c.t}</b><br>${c.s}`);
-    /* 物件 → 各節點的連線，讓不熟台中的人一眼看出相對關係 */
+    /* 本案 → 各節點的連線，讓不熟台中的人一眼看出相對關係 */
     NODES.forEach(n=> L.polyline([c.ll, n.ll],
-      {color:COLOR[n.c], weight:1.2, opacity:.45, dashArray:"4 5"}).addTo(map));
+      {color:COLOR[n.c], weight:1.3, opacity:.5, dashArray:"4 5"}).addTo(map));
   });
 
   map.fitBounds(L.latLngBounds(all).pad(0.12));
