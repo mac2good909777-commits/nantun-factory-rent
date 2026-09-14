@@ -6,6 +6,7 @@
 <title>南屯挑高廠房出租｜萬和南一路 209 號・龍富九路 39 號</title>
 <meta name="description" content="台中南屯挑高廠房出租三案。萬和南一路209號約45坪/間、挑高約8米、4間可合併約180坪單層；龍富九路39號約42坪；另有約30坪挑高9米剩2間。瑞禾不動產 張現傑 0953-909-777。">
 <link rel="icon" href="assets/logo-ruihe.png">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -46,6 +47,31 @@
   </table>
   <p class="tnote">坪數、挑高為屋主／同業提供之概估值，實際以現場丈量與租賃契約為準。</p>
 </div>
+
+
+<section class="wrap">
+  <h2>區位　<small>相對台中市區、產業園區、高鐵與國道的位置</small></h2>
+
+  <div class="locwrap">
+    <div id="locmap"></div>
+    <div class="locside">
+      <p class="locintro">兩案皆位於<b>台中市南屯區</b>，緊鄰市區南側，是台中<b>市區生活圈與西側產業帶的交會位置</b>：
+        往東北 10 分鐘進七期市政中心，往西 10 分鐘到精科與台中產業園區，往南 10 分鐘上高鐵，
+        往北 5 分鐘上中山高南屯交流道。</p>
+      <table class="cmp loc">
+        <thead><tr><th>主要節點</th><th>物件一<br><span>萬和南一路</span></th><th>物件二<br><span>龍富九路</span></th></tr></thead>
+        <tbody>
+          <tr><td><i class="dot c1"></i>國道 1 號（中山高）南屯交流道</td><td class="hi">約 2.8 km</td><td class="hi">約 1.9 km</td></tr>
+          <tr><td><i class="dot c2"></i>高鐵台中站（烏日）</td><td>約 3.1 km</td><td>約 3.1 km</td></tr>
+          <tr><td><i class="dot c3"></i>台中精密機械科技創新園區</td><td>約 3.5 km</td><td class="hi">約 2.5 km</td></tr>
+          <tr><td><i class="dot c4"></i>台中產業園區（台中工業區）</td><td>約 5.5 km</td><td>約 4.5 km</td></tr>
+          <tr><td><i class="dot c5"></i>台中市政中心・七期</td><td>約 3.8 km</td><td>約 3.7 km</td></tr>
+        </tbody>
+      </table>
+      <p class="tnote">上表為地圖直線距離概估，實際車程依路況而定。物件三位置洽詢後提供。</p>
+    </div>
+  </div>
+</section>
 
 <section class="wrap">
   <h2>物件一　<small>萬和南一路 209 號・全新鋼構廠房</small></h2>
@@ -215,6 +241,7 @@
   <img id="lbimg" alt="">
 </div>
 
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="app.js"></script>
 </body>
 </html>

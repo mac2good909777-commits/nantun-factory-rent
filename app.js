@@ -22,3 +22,48 @@ document.addEventListener("keydown", e=>{
   if(e.key==="ArrowRight") step(1);
   if(e.key==="ArrowLeft") step(-1);
 });
+
+/* ---------- 區位圖（Leaflet）---------- */
+if (document.getElementById("locmap") && window.L) {
+  const CASES = [
+    {n:"1", t:"物件一　萬和南一路 209 號", s:"約45坪/間・挑高約8米・共4間（合計約180坪）", ll:[24.130262,120.635346]},
+    {n:"2", t:"物件二　龍富九路 39 號", s:"約42坪・65,000元/月", ll:[24.134989,120.626612]}
+  ];
+  const NODES = [
+    {c:"c1", t:"國道 1 號（中山高）南屯交流道", ll:[24.15134,120.62003]},
+    {c:"c2", t:"高鐵台中站（烏日）", ll:[24.11007,120.61400]},
+    {c:"c3", t:"台中精密機械科技創新園區（精科）", ll:[24.14768,120.60624]},
+    {c:"c4", t:"台中產業園區（台中工業區）", ll:[24.16758,120.60010]},
+    {c:"c5", t:"台中市政中心・七期", ll:[24.16303,120.64574]}
+  ];
+  const COLOR = {c1:"#b3541e", c2:"#7a4fa3", c3:"#1f6f8b", c4:"#3d7a4e", c5:"#8a6d10"};
+
+  const map = L.map("locmap", {scrollWheelZoom:false});
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+    {maxZoom:18, attribution:"© OpenStreetMap contributors"}).addTo(map);
+
+  const all = [];
+  NODES.forEach(n=>{
+    all.push(n.ll);
+    L.marker(n.ll, {icon: L.divIcon({className:"", iconSize:[14,14], iconAnchor:[7,7],
+      html:`<div style="width:14px;height:14px;border-radius:50%;background:${COLOR[n.c]};
+        border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.45)"></div>`})})
+      .addTo(map).bindTooltip(n.t, {direction:"top", offset:[0,-8]});
+  });
+  CASES.forEach(c=>{
+    all.push(c.ll);
+    L.marker(c.ll, {icon: L.divIcon({className:"", iconSize:[30,30], iconAnchor:[15,15],
+      html:`<div style="width:30px;height:30px;border-radius:50%;background:#2B5937;color:#fff;
+        border:3px solid #C0A434;box-shadow:0 2px 7px rgba(0,0,0,.5);display:flex;
+        align-items:center;justify-content:center;font:800 15px/1 sans-serif">${c.n}</div>`})})
+      .addTo(map)
+      .bindTooltip(c.t, {direction:"top", offset:[0,-16], permanent:false})
+      .bindPopup(`<b>${c.t}</b><br>${c.s}`);
+    /* 物件 → 各節點的連線，讓不熟台中的人一眼看出相對關係 */
+    NODES.forEach(n=> L.polyline([c.ll, n.ll],
+      {color:COLOR[n.c], weight:1.2, opacity:.45, dashArray:"4 5"}).addTo(map));
+  });
+
+  map.fitBounds(L.latLngBounds(all).pad(0.12));
+  setTimeout(()=>map.invalidateSize(), 300);
+}

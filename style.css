@@ -118,3 +118,18 @@ footer b{color:#cfe0d3}
   .case{break-inside:avoid;box-shadow:none}
   header{background:#2B5937 !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
 }
+
+/* 區位圖 */
+.locwrap{display:flex;gap:18px;flex-wrap:wrap;align-items:stretch}
+#locmap{flex:1 1 420px;min-width:300px;height:430px;border:1px solid var(--line);
+  border-radius:12px;background:#e9e7e2;z-index:0}
+.locside{flex:1 1 380px;min-width:300px}
+.locintro{margin:0 0 14px;font-size:14px;color:var(--ink2)}
+.locintro b{color:var(--ink)}
+.cmp.loc th span{font-weight:400;font-size:11px;opacity:.85}
+.cmp.loc td:first-child{font-size:13.5px}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:7px;
+  vertical-align:middle;border:1px solid rgba(0,0,0,.15)}
+.dot.c1{background:#b3541e}.dot.c2{background:#7a4fa3}.dot.c3{background:#1f6f8b}
+.dot.c4{background:#3d7a4e}.dot.c5{background:#8a6d10}
+@media print{#locmap{height:340px}}
