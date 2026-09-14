@@ -21,6 +21,17 @@ header .sub{margin:0;color:#cfe0d3;font-size:14.5px}
   margin:22px 0 0;font-size:13.5px;color:#5c4a12}
 .note b{color:#8a6d10}
 
+.cmp{width:100%;border-collapse:collapse;margin:18px 0 6px;background:#fff;font-size:14px;
+  border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.cmp th,.cmp td{padding:10px 12px;text-align:center;border-bottom:1px solid var(--line);white-space:nowrap}
+.cmp th{background:var(--accent);color:#fff;font-weight:600;font-size:13px;letter-spacing:.03em}
+.cmp td:first-child,.cmp th:first-child{text-align:left}
+.cmp tbody tr:last-child td{border-bottom:0}
+.cmp td b{color:var(--accent2)}
+.cmp td.hi{background:#fdf8ec;color:var(--accent);font-weight:800}
+.tnote{font-size:12.5px;color:var(--ink3);margin:6px 0 0}
+@media(max-width:640px){.cmp{display:block;overflow-x:auto}}
+
 section{padding:30px 0 6px}
 h2{font-size:19px;margin:0 0 16px;display:flex;align-items:center;gap:9px}
 h2::before{content:"";width:4px;height:18px;background:var(--accent2);border-radius:2px;flex:none}
