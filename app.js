@@ -3,7 +3,10 @@ document.querySelectorAll("iframe[data-map]").forEach(f=>{
   f.src = "https://maps.google.com/maps?q=" + encodeURIComponent(f.dataset.map) + "&z=17&hl=zh-TW&output=embed";
 });
 document.querySelectorAll("iframe[data-sv]").forEach(f=>{
-  f.src = "https://maps.google.com/maps?q=&layer=c&cbll=" + f.dataset.sv + "&cbp=11,0,0,0,0&hl=zh-TW&output=svembed";
+  /* data-sv="緯度,經度" 或 "緯度,經度,朝向角" */
+  const v = f.dataset.sv.split(","), yaw = v[2] || 0;
+  f.src = "https://maps.google.com/maps?q=&layer=c&cbll=" + v[0] + "," + v[1] +
+          "&cbp=11," + yaw + ",0,0,0&hl=zh-TW&output=svembed";
 });
 
 /* 照片燈箱 */
